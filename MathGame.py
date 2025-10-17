@@ -30,10 +30,22 @@ def number(num1, num2, op):
     elif op == "/":
         return num1 / num2
 
+def combos():
+    global combo
+    global maxcombo
+    
+    if combo > maxcombo:
+        maxcombo = combo
 
 operation = ("+", "-", "*", "/")
 
 monsterhealth = 100
+
+combo = 0
+
+maxcombo = 0
+
+score = 0
 
 tolerance = 0.5
 
@@ -48,30 +60,44 @@ while True:
     # Problem result
     result = number(num1, num2, op)
     userinput(op)
-    
+
     # Comparing results and answers
     if op == "/":
         if abs(result - divisionreply) <= tolerance:
             monsterhealth -= 5
+            score += 1
+            combo += 1
+            combos()
             print("True! :)")
             print(f"Monster Health: {monsterhealth}")
+            print(f"Score: {score} Combo: {combo}")
         else:
             monsterhealth += 10
+            combo = 0
             print("False! :(")
             print(f"Monster Health: {monsterhealth}")
+            print(f"Score: {score} Combo: {combo}")
     else:
         if result == reply:
             monsterhealth -= 5
+            score += 1
+            combo += 1
+            combos()
             print("True! :)")
             print(f"Monster Health: {monsterhealth}")
+            print(f"Score: {score} Combo: {combo}")
         else:
             monsterhealth += 10
+            combo = 0
             print("False! :(")
             print(f"Monster Health: {monsterhealth}")
+            print(f"Score: {score} Combo: {combo}")
 
     # The game ends when the monster dies
     if monsterhealth == 0:
         print("YOU WIN! :)")
+        combos()
+        print(f"Score: {score} Max Combo: {maxcombo}")
         print("Thank you for playing!")
         time.sleep(5)
         break
