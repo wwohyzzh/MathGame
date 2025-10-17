@@ -10,6 +10,8 @@ A fun console-based math game where you battle a monster by solving random math 
 
 - Health system for the monster
 
+- Score and combo system
+
 - Tolerance for division answers (accepts close results)
 
 - Includes error handling to ensure only numbers are entered
@@ -28,6 +30,6 @@ Have fun!
 
 by wwohyzzh
 
-Follow Me:
+### Follow Me:
 - Reddit u/wwohyzzh
 - Instagram: @wwohyzzh
