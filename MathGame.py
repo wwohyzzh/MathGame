@@ -8,13 +8,13 @@ def userinput(op):
     while True:
         if op == "/":
             try:
-                divisionreply = float(input(f"{num1} {op} {num2}: "))
+                divisionreply = float(input(f"\033[4;33m{num1} {op} {num2}:\033[0m "))
                 break
             except ValueError:
                 print("Just Enter Numbers!")
         else:
             try:
-                reply = int(input(f"{num1} {op} {num2}: "))
+                reply = int(input(f"\033[4;33m{num1} {op} {num2}:\033[0m "))
                 break
             except ValueError:
                 print("Just Enter Numbers!")
@@ -68,36 +68,36 @@ while True:
             score += 1
             combo += 1
             combos()
-            print("True! :)")
-            print(f"Monster Health: {monsterhealth}")
-            print(f"Score: {score} Combo: {combo}")
+            print("\033[1;32mTrue! :)\033[0m")
+            print(f"\33[31mMonster Health:\033[0m {monsterhealth}")
+            print(f"\033[32mScore:\033[0m {score} \033[34mCombo:\033[0m {combo}")
         else:
             monsterhealth += 10
             combo = 0
-            print("False! :(")
-            print(f"Monster Health: {monsterhealth}")
-            print(f"Score: {score} Combo: {combo}")
+            print("\033[1;31mFalse! :(\033[0m")
+            print(f"\33[31mMonster Health:\033[0m {monsterhealth}")
+            print(f"\033[32mScore:\033[0m {score} \033[31mCombo:\033[0m {combo}")
     else:
         if result == reply:
             monsterhealth -= 5
             score += 1
             combo += 1
             combos()
-            print("True! :)")
-            print(f"Monster Health: {monsterhealth}")
-            print(f"Score: {score} Combo: {combo}")
+            print("\033[1;32mTrue! :)\033[0m")
+            print(f"\33[31mMonster Health:\033[0m {monsterhealth}")
+            print(f"\033[32mScore:\033[0m {score} \033[34mCombo:\033[0m {combo}")
         else:
             monsterhealth += 10
             combo = 0
-            print("False! :(")
-            print(f"Monster Health: {monsterhealth}")
-            print(f"Score: {score} Combo: {combo}")
+            print("\033[1;31mFalse! :(\033[0m")
+            print(f"\33[31mMonster Health:\033[0m {monsterhealth}")
+            print(f"\033[32mScore:\033[0m {score} \033[31mCombo:\033[0m {combo}")
 
     # The game ends when the monster dies
     if monsterhealth == 0:
-        print("YOU WIN! :)")
+        print("\033[1;32;40mYOU WIN! :)\033[0m")
         combos()
-        print(f"Score: {score} Max Combo: {maxcombo}")
+        print(f"\033[32mScore:\033[0m {score} \033[34mMax Combo:\033[0m {maxcombo}")
         print("Thank you for playing!")
         time.sleep(5)
         break
