@@ -12,6 +12,8 @@ A fun console-based math game where you battle a monster by solving random math 
 
 - Score and combo system
 
+- High readability with colorful terminal output
+
 - Tolerance for division answers (accepts close results)
 
 - Includes error handling to ensure only numbers are entered
@@ -33,3 +35,4 @@ by wwohyzzh
 ### Follow Me:
 - Reddit u/wwohyzzh
 - Instagram: @wwohyzzh
+
