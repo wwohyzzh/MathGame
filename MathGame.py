@@ -30,22 +30,23 @@ def number(num1, num2, op):
     elif op == "/":
         return num1 / num2
 
-def combos():
-    global combo
-    global maxcombo
-    
-    if combo > maxcombo:
-        maxcombo = combo
+def true(state):
+    state["monsterhealth"] -= 5
+    state["score"] += 1
+    state["combo"] += 1
+
+def false(state):
+    state["monsterhealth"] += 10
+    state["combo"] = 0
+
+# Record maximum combo value
+def combos(state):
+    if state["combo"] > state["maxcombo"]:
+        state["maxcombo"] = state["combo"]
+
+state = {"monsterhealth": 100, "score": 0, "combo": 0, "maxcombo": 0}
 
 operation = ("+", "-", "*", "/")
-
-monsterhealth = 100
-
-combo = 0
-
-maxcombo = 0
-
-score = 0
 
 tolerance = 0.5
 
@@ -64,40 +65,34 @@ while True:
     # Comparing results and answers
     if op == "/":
         if abs(result - divisionreply) <= tolerance:
-            monsterhealth -= 5
-            score += 1
-            combo += 1
-            combos()
+            true(state)
+            combos(state)
             print("\033[1;32mTrue! :)\033[0m")
-            print(f"\33[31mMonster Health:\033[0m {monsterhealth}")
-            print(f"\033[32mScore:\033[0m {score} \033[34mCombo:\033[0m {combo}")
+            print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
+            print(f"\033[32mScore:\033[0m {state["score"]} \033[34mCombo:\033[0m {state["combo"]}")
         else:
-            monsterhealth += 10
-            combo = 0
+            false(state)
             print("\033[1;31mFalse! :(\033[0m")
-            print(f"\33[31mMonster Health:\033[0m {monsterhealth}")
-            print(f"\033[32mScore:\033[0m {score} \033[31mCombo:\033[0m {combo}")
+            print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
+            print(f"\033[32mScore:\033[0m {state["score"]} \033[31mCombo:\033[0m {state["combo"]}")
     else:
         if result == reply:
-            monsterhealth -= 5
-            score += 1
-            combo += 1
-            combos()
+            true(state)
+            combos(state)
             print("\033[1;32mTrue! :)\033[0m")
-            print(f"\33[31mMonster Health:\033[0m {monsterhealth}")
-            print(f"\033[32mScore:\033[0m {score} \033[34mCombo:\033[0m {combo}")
+            print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
+            print(f"\033[32mScore:\033[0m {state['score']} \033[34mCombo:\033[0m {state["combo"]}")
         else:
-            monsterhealth += 10
-            combo = 0
+            false(state)
             print("\033[1;31mFalse! :(\033[0m")
-            print(f"\33[31mMonster Health:\033[0m {monsterhealth}")
-            print(f"\033[32mScore:\033[0m {score} \033[31mCombo:\033[0m {combo}")
+            print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
+            print(f"\033[32mScore:\033[0m {state["score"]} \033[31mCombo:\033[0m {state["combo"]}")
 
     # The game ends when the monster dies
-    if monsterhealth == 0:
+    if state["monsterhealth"] == 0:
         print("\033[1;32;40mYOU WIN! :)\033[0m")
-        combos()
-        print(f"\033[32mScore:\033[0m {score} \033[34mMax Combo:\033[0m {maxcombo}")
+        combos(state)
+        print(f"\033[32mScore:\033[0m {state["score"]} \033[34mMax Combo:\033[0m {state["maxcombo"]}")
         print("Thank you for playing!")
         time.sleep(5)
         break
