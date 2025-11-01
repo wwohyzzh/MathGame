@@ -28,6 +28,12 @@ A fun console-based math game where you battle a monster by solving random math 
 
 Have fun!
 
+## Screenshot
+
+![Gameplay screen](Terminal%20output.png)
+
+![Win screen](Terminal%output%202.png)
+
 ## Author
 
 by wwohyzzh
@@ -35,4 +41,5 @@ by wwohyzzh
 ### Follow Me:
 - Reddit u/wwohyzzh
 - Instagram: @wwohyzzh
+
 
