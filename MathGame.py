@@ -4,20 +4,12 @@ import time
 # Gets the answer from the user
 def userinput(op):
     global reply
-    global divisionreply
     while True:
-        if op == "/":
-            try:
-                divisionreply = float(input(f"\033[4;33m{num1} {op} {num2}:\033[0m "))
-                break
-            except ValueError:
-                print("Just Enter Numbers!")
-        else:
-            try:
-                reply = int(input(f"\033[4;33m{num1} {op} {num2}:\033[0m "))
-                break
-            except ValueError:
-                print("Just Enter Numbers!")
+        try:
+            reply = int(input(f"\033[4;33m{num1} {op} {num2}:\033[0m "))
+            break
+        except ValueError:
+            print("Just Enter Numbers!")
 
 # Doing math operations
 def number(num1, num2, op):
@@ -27,8 +19,8 @@ def number(num1, num2, op):
         return num1 - num2
     elif op == "*":
         return num1 * num2
-    elif op == "/":
-        return num1 / num2
+    elif op == "//":
+        return num1 // num2
 
 def true(state):
     state["monsterhealth"] -= 5
@@ -46,9 +38,7 @@ def combos(state):
 
 state = {"monsterhealth": 100, "score": 0, "combo": 0, "maxcombo": 0}
 
-operation = ("+", "-", "*", "/")
-
-tolerance = 0.5
+operation = ("+", "-", "*", "//")
 
 # Loop
 while True:
@@ -63,30 +53,17 @@ while True:
     userinput(op)
 
     # Comparing results and answers
-    if op == "/":
-        if abs(result - divisionreply) <= tolerance:
-            true(state)
-            combos(state)
-            print("\033[1;32mTrue! :)\033[0m")
-            print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
-            print(f"\033[32mScore:\033[0m {state["score"]} \033[34mCombo:\033[0m {state["combo"]}")
-        else:
-            false(state)
-            print("\033[1;31mFalse! :(\033[0m")
-            print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
-            print(f"\033[32mScore:\033[0m {state["score"]} \033[31mCombo:\033[0m {state["combo"]}")
+    if result == reply:
+        true(state)
+        combos(state)
+        print("\033[1;32mTrue! :)\033[0m")
+        print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
+        print(f"\033[32mScore:\033[0m {state['score']} \033[34mCombo:\033[0m {state["combo"]}")
     else:
-        if result == reply:
-            true(state)
-            combos(state)
-            print("\033[1;32mTrue! :)\033[0m")
-            print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
-            print(f"\033[32mScore:\033[0m {state['score']} \033[34mCombo:\033[0m {state["combo"]}")
-        else:
-            false(state)
-            print("\033[1;31mFalse! :(\033[0m")
-            print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
-            print(f"\033[32mScore:\033[0m {state["score"]} \033[31mCombo:\033[0m {state["combo"]}")
+        false(state)
+        print("\033[1;31mFalse! :(\033[0m")
+        print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
+        print(f"\033[32mScore:\033[0m {state["score"]} \033[31mCombo:\033[0m {state["combo"]}")
 
     # The game ends when the monster dies
     if state["monsterhealth"] == 0:
