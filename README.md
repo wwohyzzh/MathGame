@@ -32,7 +32,7 @@ Have fun!
 
 ![Gameplay screen](Terminal%20output.png)
 
-![Win screen](Terminal%output%202.png)
+![Win screen](Terminal%20output%202.png)
 
 ## Author
 
@@ -41,5 +41,6 @@ by wwohyzzh
 ### Follow Me:
 - Reddit u/wwohyzzh
 - Instagram: @wwohyzzh
+
 
 
