@@ -14,7 +14,7 @@ A fun console-based math game where you battle a monster by solving random math 
 
 - High readability with colorful terminal output
 
-- Tolerance for division answers (accepts close results)
+- Division operations are only performed with integers
 
 - Includes error handling to ensure only numbers are entered
 
@@ -41,6 +41,7 @@ by wwohyzzh
 ### Follow Me:
 - Reddit u/wwohyzzh
 - Instagram: @wwohyzzh
+
 
 
 
