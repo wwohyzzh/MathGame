@@ -1,6 +1,30 @@
 import random
 import time
 
+def difficulty(state):
+    global maxnum
+    while True:
+        try:
+            print("Select Difficulty:\n\033[31m1 Hard\033[0m \033[33m2 Medium\033[0m \033[32m3 Easy\033[0m")
+            select = int(input("Select: "))
+            print("")
+            if select == 1:
+                state["monsterhealth"] = 300
+                maxnum = 250
+                break
+            elif select == 2:
+                state["monsterhealth"] = 100
+                maxnum = 100
+                break
+            elif select == 3:
+                state["monsterhealth"] = 50
+                maxnum = 50
+                break
+            else:
+                print("Just select 1, 2 and 3\n")
+        except ValueError:
+            print("\nJust select 1, 2 and 3\n")
+
 # Gets the answer from the user
 def userinput(op):
     global reply
@@ -36,15 +60,19 @@ def combos(state):
     if state["combo"] > state["maxcombo"]:
         state["maxcombo"] = state["combo"]
 
-state = {"monsterhealth": 100, "score": 0, "combo": 0, "maxcombo": 0}
+state = {"monsterhealth": 0, "score": 0, "combo": 0, "maxcombo": 0}
 
 operation = ("+", "-", "*", "//")
+
+maxnum = 0
+
+difficulty(state)
 
 # Loop
 while True:
 
-    num1 = random.randint(0, 100)
-    num2 = random.randint(1, 100)
+    num1 = random.randint(0, maxnum)
+    num2 = random.randint(1, maxnum)
     
     op = random.choice(operation)
     
@@ -56,18 +84,18 @@ while True:
     if result == reply:
         true(state)
         combos(state)
-        print("\033[1;32mTrue! :)\033[0m")
+        print("\n\033[1;32mTrue! :)\033[0m")
         print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
-        print(f"\033[32mScore:\033[0m {state['score']} \033[34mCombo:\033[0m {state["combo"]}")
+        print(f"\033[32mScore:\033[0m {state['score']} \033[34mCombo:\033[0m {state["combo"]}\n")
     else:
         false(state)
-        print("\033[1;31mFalse! :(\033[0m")
+        print("\n\033[1;31mFalse! :(\033[0m")
         print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
-        print(f"\033[32mScore:\033[0m {state["score"]} \033[31mCombo:\033[0m {state["combo"]}")
+        print(f"\033[32mScore:\033[0m {state["score"]} \033[31mCombo:\033[0m {state["combo"]}\n")
 
     # The game ends when the monster dies
     if state["monsterhealth"] == 0:
-        print("\033[1;32;40mYOU WIN! :)\033[0m")
+        print("\n\n\033[1;32;40mYOU WIN! :)\033[0m")
         combos(state)
         print(f"\033[32mScore:\033[0m {state["score"]} \033[34mMax Combo:\033[0m {state["maxcombo"]}")
         print("Thank you for playing!")
