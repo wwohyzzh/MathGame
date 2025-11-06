@@ -12,6 +12,8 @@ A fun console-based math game where you battle a monster by solving random math 
 
 - Score and combo system
 
+- 3 Difficulty options
+
 - High readability with colorful terminal output
 
 - Division operations are only performed with integers
@@ -30,6 +32,8 @@ Have fun!
 
 ## Screenshot
 
+![Difficulty selection screen](Terminal%20output%203.png)
+
 ![Gameplay screen](Terminal%20output.png)
 
 ![Win screen](Terminal%20output%202.png)
@@ -41,6 +45,7 @@ by wwohyzzh
 ### Follow Me:
 - Reddit u/wwohyzzh
 - Instagram: @wwohyzzh
+
 
 
 
