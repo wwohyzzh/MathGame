@@ -14,6 +14,10 @@ A fun console-based math game where you battle a monster by solving random math 
 
 - 3 Difficulty options
 
+- Shows the correct answer after the wrong answer
+
+- Displays the total number of mistakes at the end of the game
+
 - High readability with colorful terminal output
 
 - Division operations are only performed with integers
@@ -36,6 +40,8 @@ Have fun!
 
 ![Gameplay screen](Terminal%20output.png)
 
+![Wrong answer screen](Terminal%20output%204.png)
+
 ![Win screen](Terminal%20output%202.png)
 
 ## Author
@@ -45,6 +51,7 @@ by wwohyzzh
 ### Follow Me:
 - Reddit u/wwohyzzh
 - Instagram: @wwohyzzh
+
 
 
 
