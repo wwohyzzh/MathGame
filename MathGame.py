@@ -1,6 +1,7 @@
 import random
 import time
 
+# Difficulty selection screen
 def difficulty(state):
     global maxnum
     while True:
@@ -54,17 +55,16 @@ def true(state):
 def false(state):
     state["monsterhealth"] += 10
     state["combo"] = 0
+    state["mistake"] += 1
 
 # Record maximum combo value
 def combos(state):
     if state["combo"] > state["maxcombo"]:
         state["maxcombo"] = state["combo"]
 
-state = {"monsterhealth": 0, "score": 0, "combo": 0, "maxcombo": 0}
+state = {"monsterhealth": 0, "score": 0, "combo": 0, "maxcombo": 0, "mistake": 0}
 
 operation = ("+", "-", "*", "//")
-
-maxnum = 0
 
 difficulty(state)
 
@@ -86,18 +86,19 @@ while True:
         combos(state)
         print("\n\033[1;32mTrue! :)\033[0m")
         print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
-        print(f"\033[32mScore:\033[0m {state['score']} \033[34mCombo:\033[0m {state["combo"]}\n")
+        print(f"\033[32mScore:\033[0m {state["score"]} \033[34mCombo:\033[0m {state["combo"]}\n")
     else:
         false(state)
         print("\n\033[1;31mFalse! :(\033[0m")
+        print(f"Correct answer: {result}\n")
         print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
         print(f"\033[32mScore:\033[0m {state["score"]} \033[31mCombo:\033[0m {state["combo"]}\n")
 
     # The game ends when the monster dies
     if state["monsterhealth"] == 0:
-        print("\n\n\033[1;32;40mYOU WIN! :)\033[0m")
         combos(state)
-        print(f"\033[32mScore:\033[0m {state["score"]} \033[34mMax Combo:\033[0m {state["maxcombo"]}")
+        print("\n\n\033[1;32;40mYOU WIN! :)\033[0m")
+        print(f"\033[32mScore:\033[0m {state["score"]} \033[34mMax Combo:\033[0m {state["maxcombo"]} \033[31mMistakes made:\033[0m {state["mistake"]}")
         print("Thank you for playing!")
         time.sleep(5)
         break
