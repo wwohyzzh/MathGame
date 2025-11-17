@@ -1,6 +1,14 @@
 import random
 import time
 
+# Helper function to reduce duplicate print statements
+def display_game_state(state, message, correct_answer=None, combo_color="\033[34m"):
+    print(f"\n{message}")
+    if correct_answer is not None:
+        print(f"Correct answer: {correct_answer}")
+    print(f"\33[31mMonster Health:\033[0m {state['monsterhealth']}")
+    print(f"\033[32mScore:\033[0m {state['score']} {combo_color}Combo:\033[0m {state['combo']}\n")
+
 # Difficulty selection screen
 def difficulty(state):
     global maxnum
@@ -84,22 +92,19 @@ while True:
     if result == reply:
         true(state)
         combos(state)
-        print("\n\033[1;32mTrue! :)\033[0m")
-        print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
-        print(f"\033[32mScore:\033[0m {state["score"]} \033[34mCombo:\033[0m {state["combo"]}\n")
+        display_game_state(state, "\033[1;32mTrue! :)\033[0m")
     else:
         false(state)
-        print("\n\033[1;31mFalse! :(\033[0m")
-        print(f"Correct answer: {result}\n")
-        print(f"\33[31mMonster Health:\033[0m {state["monsterhealth"]}")
-        print(f"\033[32mScore:\033[0m {state["score"]} \033[31mCombo:\033[0m {state["combo"]}\n")
+        display_game_state(state, "\033[1;31mFalse! :(\033[0m", correct_answer=result, combo_color="\033[31m")
 
     # The game ends when the monster dies
     if state["monsterhealth"] == 0:
         combos(state)
-        print("\n\n\033[1;32;40mYOU WIN! :)\033[0m")
-        print(f"\033[32mScore:\033[0m {state["score"]} \033[34mMax Combo:\033[0m {state["maxcombo"]} \033[31mMistakes made:\033[0m {state["mistake"]}")
-        print("Thank you for playing!")
+        print(f"\n\n\033[1;32;40mYOU WIN! :)\033[0m\n"
+              f"\033[32mScore:\033[0m {state['score']} "
+              f"\033[34mMax Combo:\033[0m {state['maxcombo']} "
+              f"\033[31mMistakes made:\033[0m {state['mistake']}\n"
+              f"Thank you for playing!")
         time.sleep(5)
         break
 
