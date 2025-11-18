@@ -5,13 +5,12 @@ import time
 def display_game_state(state, message, correct_answer=None, combo_color="\033[34m"):
     print(f"\n{message}")
     if correct_answer is not None:
-        print(f"Correct answer: {correct_answer}")
+        print(f"Correct answer: {correct_answer}\n")
     print(f"\33[31mMonster Health:\033[0m {state['monsterhealth']}")
     print(f"\033[32mScore:\033[0m {state['score']} {combo_color}Combo:\033[0m {state['combo']}\n")
 
 # Difficulty selection screen
 def difficulty(state):
-    global maxnum
     while True:
         try:
             print("Select Difficulty:\n\033[31m1 Hard\033[0m \033[33m2 Medium\033[0m \033[32m3 Easy\033[0m")
@@ -33,16 +32,17 @@ def difficulty(state):
                 print("Just select 1, 2 and 3\n")
         except ValueError:
             print("\nJust select 1, 2 and 3\n")
+    return maxnum
 
 # Gets the answer from the user
 def userinput(op):
-    global reply
     while True:
         try:
             reply = int(input(f"\033[4;33m{num1} {op} {num2}:\033[0m "))
             break
         except ValueError:
             print("Just Enter Numbers!")
+    return reply
 
 # Doing math operations
 def number(num1, num2, op):
@@ -74,7 +74,7 @@ state = {"monsterhealth": 0, "score": 0, "combo": 0, "maxcombo": 0, "mistake": 0
 
 operation = ("+", "-", "*", "//")
 
-difficulty(state)
+maxnum = difficulty(state)
 
 # Loop
 while True:
@@ -86,7 +86,7 @@ while True:
     
     # Problem result
     result = number(num1, num2, op)
-    userinput(op)
+    reply = userinput(op)
 
     # Comparing results and answers
     if result == reply:
