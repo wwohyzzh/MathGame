@@ -1,10 +1,10 @@
-# MathGame
+# 🧮 MathGame
 
-## Description:
+## 📝 Description:
 
 A fun console-based math game where you battle a monster by solving random math problems. Correct answers weaken the monster, while wrong answers make it stronger. Perfect for practicing basic math operations in a playful way!
 
-## Features:
+## ✨ Features:
 
 - Random addition, subtraction, multiplication, and division problems
 
@@ -24,7 +24,7 @@ A fun console-based math game where you battle a monster by solving random math 
 
 - Includes error handling to ensure only numbers are entered
 
-## How to Play:
+## 🎮 How to Play:
 
 - Run the program: `MathGame.py`
 
@@ -34,7 +34,7 @@ A fun console-based math game where you battle a monster by solving random math 
 
 Have fun!
 
-## Screenshot
+## 📸 Screenshot
 
 ![Difficulty selection screen](Terminal%20output%203.png)
 
@@ -44,13 +44,17 @@ Have fun!
 
 ![Win screen](Terminal%20output%202.png)
 
-## Author
+## 🤝 Contributors:
+Thanks to everyone who contributed to this project!
+
+## 👤 Author
 
 by wwohyzzh
 
-### Follow Me:
+### 🔗 Follow Me:
 - Reddit u/wwohyzzh
 - Instagram: @wwohyzzh
+
 
 
 
