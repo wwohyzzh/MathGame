@@ -2,12 +2,18 @@ import random
 import time
 
 # Helper function to reduce duplicate print statements
-def display_game_state(state, message, correct_answer=None, combo_color="\033[34m"):
+def display_game_state(state, message, correct_answer=None, combo_color=34):
     print(f"\n{message}")
+    
     if correct_answer is not None:
         print(f"Correct answer: {correct_answer}\n")
-    print(f"\33[31mMonster Health:\033[0m {state['monsterhealth']}")
-    print(f"\033[32mScore:\033[0m {state['score']} {combo_color}Combo:\033[0m {state['combo']}\n")
+    
+    monsterhealth = f"\33[31mMonster Health:\033[0m {state['monsterhealth']}"
+    score = f"\033[32mScore:\033[0m {state['score']}"
+    combo = f"\033[{combo_color}mCombo:\033[0m {state['combo']}"
+    
+    print(monsterhealth)
+    print(f"{score} {combo}\n")
 
 # Difficulty selection screen
 def difficulty(state):
@@ -95,7 +101,7 @@ while True:
         display_game_state(state, "\033[1;32mTrue! :)\033[0m")
     else:
         false(state)
-        display_game_state(state, "\033[1;31mFalse! :(\033[0m", correct_answer=result, combo_color="\033[31m")
+        display_game_state(state, "\033[1;31mFalse! :(\033[0m", correct_answer=result, combo_color=31)
 
     # The game ends when the monster dies
     if state["monsterhealth"] == 0:
