@@ -36,13 +36,13 @@ Have fun!
 
 ## 📸 Screenshot
 
-![Difficulty selection screen](Terminal%20output%203.png)
+![Difficulty selection screen](screenshot/Terminal%20output%203.png)
 
-![Gameplay screen](Terminal%20output.png)
+![Gameplay screen](screenshot/Terminal%20output.png)
 
-![Wrong answer screen](Terminal%20output%204.png)
+![Wrong answer screen](screenshot/Terminal%20output%204.png)
 
-![Win screen](Terminal%20output%202.png)
+![Win screen](screenshot/Terminal%20output%202.png)
 
 ## 🤝 Contributors:
 Thanks to everyone who contributed to this project!
