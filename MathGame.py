@@ -41,7 +41,7 @@ def difficulty(state):
     return maxnum
 
 # Gets the answer from the user
-def userinput(op):
+def userinput():
     while True:
         try:
             reply = int(input(f"\033[4;33m{num1} {op} {num2}:\033[0m "))
@@ -92,7 +92,7 @@ while True:
     
     # Problem result
     result = number(num1, num2, op)
-    reply = userinput(op)
+    reply = userinput()
 
     # Comparing results and answers
     if result == reply:
