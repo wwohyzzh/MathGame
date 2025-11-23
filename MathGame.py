@@ -41,10 +41,10 @@ def difficulty(state):
     return maxnum
 
 # Gets the answer from the user
-def userinput(op):
+def userinput():
     while True:
         try:
-            reply = int(input(f"\033[4;33m{num1} {op} {num2}:\033[0m "))
+            reply = int(input(f"\033[4;33m{num1} {num2}:\033[0m "))
             break
         except ValueError:
             print("Just Enter Numbers!")
