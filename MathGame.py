@@ -1,8 +1,8 @@
-import random
-import time
+from random import randint, choice
+from time import sleep
 
 # Helper function to reduce duplicate print statements
-def display_game_state(state, message, correct_answer=None, combo_color=34):
+def display_game_state(message, correct_answer=None, combo_color=34):
     print(f"\n{message}")
     
     if correct_answer is not None:
@@ -16,7 +16,7 @@ def display_game_state(state, message, correct_answer=None, combo_color=34):
     print(f"{score} {combo}\n")
 
 # Difficulty selection screen
-def difficulty(state):
+def difficulty():
     while True:
         try:
             print("Select Difficulty:\n\033[31m1 Hard\033[0m \033[33m2 Medium\033[0m \033[32m3 Easy\033[0m")
@@ -59,20 +59,23 @@ def number(num1, num2, op):
     elif op == "*":
         return num1 * num2
     elif op == "//":
-        return num1 // num2
+        try:
+            return num1 // num2
+        except ZeroDivisionError:
+            return None
 
-def true(state):
+def true():
     state["monsterhealth"] -= 5
     state["score"] += 1
     state["combo"] += 1
 
-def false(state):
+def false():
     state["monsterhealth"] += 10
     state["combo"] = 0
     state["mistake"] += 1
 
 # Record maximum combo value
-def combos(state):
+def combos():
     if state["combo"] > state["maxcombo"]:
         state["maxcombo"] = state["combo"]
 
@@ -80,38 +83,42 @@ state = {"monsterhealth": 0, "score": 0, "combo": 0, "maxcombo": 0, "mistake": 0
 
 operation = ("+", "-", "*", "//")
 
-maxnum = difficulty(state)
+maxnum = difficulty()
 
 # Loop
 while True:
 
-    num1 = random.randint(0, maxnum)
-    num2 = random.randint(1, maxnum)
-    
-    op = random.choice(operation)
+    num1 = randint(0, maxnum)
+    num2 = randint(0, maxnum)
+
+    op = choice(operation)
     
     # Problem result
     result = number(num1, num2, op)
+    
+    if result is None:
+        continue
+    
     reply = userinput()
 
     # Comparing results and answers
     if result == reply:
-        true(state)
-        combos(state)
-        display_game_state(state, "\033[1;32mTrue! :)\033[0m")
+        true()
+        combos()
+        display_game_state("\033[32mTrue! :)\033[0m")
     else:
-        false(state)
-        display_game_state(state, "\033[1;31mFalse! :(\033[0m", correct_answer=result, combo_color=31)
+        false()
+        display_game_state("\033[31mFalse! :(\033[0m", correct_answer=result, combo_color=31)
 
     # The game ends when the monster dies
     if state["monsterhealth"] == 0:
-        combos(state)
+        combos()
         print(f"\n\n\033[1;32;40mYOU WIN! :)\033[0m\n"
               f"\033[32mScore:\033[0m {state['score']} "
               f"\033[34mMax Combo:\033[0m {state['maxcombo']} "
               f"\033[31mMistakes made:\033[0m {state['mistake']}\n"
               f"Thank you for playing!")
-        time.sleep(5)
+        sleep(5)
         break
 
 # Good Luck!
