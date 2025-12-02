@@ -2,7 +2,7 @@
 
 ## 📝 Description:
 
-A fun console-based math game where you battle a monster by solving random math problems. Correct answers weaken the monster, while wrong answers make it stronger. Perfect for practicing basic math operations in a playful way!
+Introducing the new GUI-based MathGame! Solve random math questions to lower the Monster’s health and emerge victorious. Good luck!
 
 ## ✨ Features:
 
@@ -14,11 +14,9 @@ A fun console-based math game where you battle a monster by solving random math 
 
 - 3 Difficulty options
 
+- Simple GUI made with Tkinter
+
 - Shows the correct answer after the wrong answer
-
-- Displays the total number of mistakes at the end of the game
-
-- High readability with colorful terminal output
 
 - Division operations are only performed with integers
 
@@ -26,7 +24,7 @@ A fun console-based math game where you battle a monster by solving random math 
 
 ## 🎮 How to Play:
 
-- Run the program: `MathGame.py`
+- Run the program: `MathGameGUI.pyw`
 
 - Solve the math problems presented
 
@@ -36,13 +34,13 @@ Have fun!
 
 ## 📸 Screenshot
 
-![Difficulty selection screen](screenshot/Terminal%20output%203.png)
+![Difficulty selection screen](screenshot/select.png)
 
-![Gameplay screen](screenshot/Terminal%20output.png)
+![Gameplay screen](screenshot/game.png)
 
-![Wrong answer screen](screenshot/Terminal%20output%204.png)
+![True screen](screenshot/true.png)
 
-![Win screen](screenshot/Terminal%20output%202.png)
+![Win screen](screenshot/win.png)
 
 ## 🤝 Contributors:
 Thanks to everyone who contributed to this project!
@@ -50,14 +48,3 @@ Thanks to everyone who contributed to this project!
 ## 👤 Author
 
 by wwohyzzh
-
-### 🔗 Follow Me:
-- Reddit u/wwohyzzh
-- Instagram: @wwohyzzh
-
-
-
-
-
-
-
